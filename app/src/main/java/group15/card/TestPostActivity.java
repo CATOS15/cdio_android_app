@@ -1,128 +1,98 @@
 package group15.card;
         import androidx.appcompat.app.AppCompatActivity;
 
+        import android.content.Context;
         import android.os.Bundle;
         import android.view.View;
         import android.widget.Button;
         import android.widget.TextView;
 
-        import com.android.volley.AuthFailureError;
-        import com.android.volley.Request;
-        import com.android.volley.RequestQueue;
-        import com.android.volley.Response;
-        import com.android.volley.VolleyError;
-        import com.android.volley.toolbox.StringRequest;
-        import com.android.volley.toolbox.Volley;
+        import java.io.BufferedWriter;
+        import java.io.File;
+        import java.io.FileWriter;
+        import java.io.IOException;
+        import java.net.URI;
+        import java.net.URISyntaxException;
+        import java.net.URL;
 
-        import org.json.JSONObject;
-        import java.util.HashMap;
-        import java.util.Map;
+        import okhttp3.FormBody;
+        import okhttp3.MediaType;
+        import okhttp3.OkHttpClient;
+        import okhttp3.Request;
+        import okhttp3.RequestBody;
+        import okhttp3.Response;
 
-public class TestPostActivity extends AppCompatActivity {
+public class  TestPostActivity extends AppCompatActivity {
 
-    private TextView get_response_text,post_response_text;
+    private TextView get_response_text, post_response_text;
     Button get_request_button, post_request_button;
+
+    public static final MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse("text/x-markdown; charset=utf-8");
+    private final OkHttpClient client = new OkHttpClient();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posting);
-        get_request_button=findViewById(R.id.get_data);
-        post_request_button=findViewById(R.id.post_data);
+        get_request_button = findViewById(R.id.get_data);
+        post_request_button = findViewById(R.id.post_data);
 
-        get_response_text=findViewById(R.id.get_respone_data);
-        post_response_text=findViewById(R.id.post_respone_data);
-
-
-        get_request_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendGetRequest();
-            }
-        });
+        get_response_text = findViewById(R.id.get_respone_data);
+        post_response_text = findViewById(R.id.post_respone_data);
+        System.out.println("HALLO");
 
         post_request_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                postRequest();
-            }
-        });
-    }
-
-    private void postRequest() {
-        RequestQueue requestQueue= Volley.newRequestQueue(TestPostActivity.this);
-        String url="http://192.168.0.29/volley_sample/post_data.php";
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                //let's parse json data
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    post_response_text.setText("Data 1 : " + jsonObject.getString("data_1_post")+"\n");
-                    post_response_text.append("Data 2 : " + jsonObject.getString("data_2_post")+"\n");
-                    post_response_text.append("Data 3 : " + jsonObject.getString("data_3_post")+"\n");
-                    post_response_text.append("Data 4 : " + jsonObject.getString("data_4_post")+"\n");
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                    post_response_text.setText("POST DATA : unable to Parse Json");
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                post_response_text.setText("Post Data : Response Failed");
-            }
-        }){
-            @Override
-            protected Map<String,String> getParams(){
-                Map<String,String> params=new HashMap<String, String>();
-                params.put("data_1_post","Value 1 Data");
-                params.put("data_2_post","Value 2 Data");
-                params.put("data_3_post","Value 3 Data");
-                params.put("data_4_post","Value 4 Data");
-                return params;
-            }
-
-            @Override
-            public Map<String,String> getHeaders() throws AuthFailureError{
-                Map<String,String> params=new HashMap<String, String>();
-                params.put("Content-Type","application/x-www-form-urlencoded");
-                return params;
-            }
-        };
-
-        requestQueue.add(stringRequest);
-
-    }
-
-    private void sendGetRequest() {
-        //get working now
-        //let's try post and send some data to server
-        RequestQueue queue= Volley.newRequestQueue(TestPostActivity.this);
-        String url="http://192.168.0.29/volley_sample/get_data.php";
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                get_response_text.setText("Data : "+response);
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    get_response_text.setText("Data 1 :"+jsonObject.getString("data_1")+"\n");
-                    get_response_text.append("Data 2 :"+jsonObject.getString("data_2")+"\n");
-                    get_response_text.append("Data 3 :"+jsonObject.getString("data_3")+"\n");
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                    get_response_text.setText("Failed to Parse Json");
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                get_response_text.setText("Data : Response Failed");
+                new Thread() {
+                    public void run() {
+                        try {
+                            postImage();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.start();
             }
         });
 
-        queue.add(stringRequest);
+
+    }
+
+    public void postRequest() throws Exception {
+        RequestBody formBody = new FormBody.Builder()
+                .add("search", "Jurassic Park")
+                .build();
+        Request request = new Request.Builder()
+                .url("http://192.168.1.40:5005/test")
+                .post(formBody)
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            System.out.println(response.body().string());
+        }
+    }
+
+    public void postImage() throws IOException, URISyntaxException {
+
+
+        File file = new File(getFilesDir(), "README.md");
+
+        BufferedWriter bf = new BufferedWriter(new FileWriter(file));
+        bf.write("HEJSA");
+        bf.close();
+
+        Request request = new Request.Builder()
+                .url("http://192.168.1.40:5005/testImage")
+                .post(RequestBody.create(MEDIA_TYPE_MARKDOWN, file))
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            System.out.println(response.body().string());
+        }
     }
 }
