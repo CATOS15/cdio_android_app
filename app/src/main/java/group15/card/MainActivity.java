@@ -13,47 +13,32 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.util.Log;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.FileEntity;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+import static group15.card.TestPostActivity.MEDIA_TYPE_MARKDOWN;
+
 public class MainActivity extends AppCompatActivity {
 
     ImageView kabale_imageview;
@@ -66,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
     private File photoFile;
     private String FILE_NAME = "photo.jpg";
+
+    public static final MediaType MEDIA_TYPE_MARKDOWN
+            = MediaType.parse("text/x-markdown; charset=utf-8");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,43 +174,10 @@ public class MainActivity extends AppCompatActivity {
             Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
             kabale_imageview.setImageBitmap(takenImage);
 
-/*
-            String postUrl = "https://192.168.1.40:5005/test";
-            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            new SendImageTask().execute(photoFile.getAbsolutePath());
 
-            JSONObject postData = new JSONObject();
-            try {
-                postData.put("name", URLEncoder.encode("Jonathan", "UTF-8"));
-                postData.put("job", URLEncoder.encode("Software Engineer", "UTF-8"));
-
-            } catch (JSONException | UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    System.out.println(response);
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
-                }
-            }
-
-
-
-            );
-
-
-            requestQueue.add(jsonObjectRequest);
-*/
         }
-
-
     }
-
 
 
 
