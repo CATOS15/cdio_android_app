@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/kabale_linearlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:padding="10dp"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -13,6 +13,7 @@
         android:id="@+id/kabale_imageview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/kabale_imageview_descriptiontext"
         android:layout_weight="1" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="camera"
+            android:text="@string/camera_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/nextMoveButton"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="your move"
+            android:text="@string/your_move_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/takeImgButton"

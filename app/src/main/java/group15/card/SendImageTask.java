@@ -27,6 +27,8 @@ public class SendImageTask extends AsyncTask<String, Void, String> {
     private MainActivity activity;
     final LoadingDialog loadingDialog;
 
+    public static MoveInformation moveInformation = new MoveInformation(null,null,null);
+
     public static String responseMessage;
 
     Response response;
@@ -51,7 +53,7 @@ public class SendImageTask extends AsyncTask<String, Void, String> {
                 .addFormDataPart("file", strings[0], image)
                 .build();
         Request request = new Request.Builder()
-                .url("http://192.168.1.40:5005/upload")
+                .url("http://192.168.0.29:5005/upload")
                 .post(requestBody)
                 .build();
         response = null;
@@ -62,8 +64,9 @@ public class SendImageTask extends AsyncTask<String, Void, String> {
         }
         try {
             JSONObject reader = new JSONObject(response.body().string());
-            responseMessage = reader.getString("id");
-
+            moveInformation.firstcard = reader.getString("firstcard");
+            moveInformation.secondcard = reader.getString("secondcard");
+            moveInformation.movemessage = reader.getString("movemessage");
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }

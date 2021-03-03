@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">G15_7-Kabale Solver</string>
+
+    <string name="camera_text">camera</string>
+    <string name="your_move_text">your move</string>
+    <string name="kabale_imageview_descriptiontext">our main image</string>
+    <string name="popup_next_move_text">Your next move is:</string>
+    <string name="popup_your_move_text">No picture taken yet</string>
+    <string name="popup_leftimage_description">popup_leftimage</string>
+    <string name="popup_middleimage_description">popup_middleimage</string>
+    <string name="popup_rightimage_description">popup_rightimage</string>
+    <string name="popup_close_button_text">close</string>
+
 </resources>

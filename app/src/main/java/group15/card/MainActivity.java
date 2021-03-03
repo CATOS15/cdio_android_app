@@ -7,11 +7,15 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import android.Manifest;
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,8 +23,10 @@ import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -33,11 +39,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     ImageView kabale_imageview;
     Button takeImgButton, nextMoveButton;
+    ImageView popup_leftimage,popup_rightimage;
+
+    LinearLayout kabale_linearlayout;
 
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
     private TextView popup_header_text, popup_instructions_text;
     private Button popup_close_button;
+
+    Context context;
 
     final LoadingDialog loadingDialog = new LoadingDialog(MainActivity.this);
 
@@ -50,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         kabale_imageview = findViewById(R.id.kabale_imageview);
+        kabale_imageview.setImageResource(R.drawable.green_background);
+
         takeImgButton = findViewById(R.id.takeImgButton);
         popup_instructions_text = findViewById(R.id.popup_instructions_text);
 
@@ -105,13 +118,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dialogBuilder = new AlertDialog.Builder(this);
         final View movePopupView = getLayoutInflater().inflate(R.layout.popup, null);
 
-        popup_close_button = (Button) movePopupView.findViewById(R.id.popup_close_button);
-        popup_instructions_text = (TextView) movePopupView.findViewById(R.id.popup_instructions_text);
-        popup_instructions_text.setText((String) SendImageTask.responseMessage);
+        popup_close_button = movePopupView.findViewById(R.id.popup_close_button);
 
+        popup_leftimage = movePopupView.findViewById(R.id.popup_leftimage);
+        popup_rightimage = movePopupView.findViewById(R.id.popup_rightimage);
+
+        popup_instructions_text = movePopupView.findViewById(R.id.popup_instructions_text);
+        popup_instructions_text.setText((String) SendImageTask.moveInformation.movemessage);
+
+        //fiks billeder
+        context = popup_leftimage.getContext();
+
+        String firstcard_temp = SendImageTask.moveInformation.firstcard;
+        String secondcard_temp = SendImageTask.moveInformation.secondcard;
+
+        if(firstcard_temp != null && secondcard_temp != null){
+            Resources res = getResources();
+            int resId1 = this.getResources().getIdentifier("card_"+firstcard_temp.toLowerCase(), "drawable", context.getPackageName());
+            int resId2 = this.getResources().getIdentifier("card_"+secondcard_temp.toLowerCase(), "drawable", context.getPackageName());
+
+            popup_leftimage.setImageResource(resId1);
+            popup_rightimage.setImageResource(resId2);
+        } else {
+            popup_leftimage.setImageResource(R.drawable.card_red_back);
+            popup_rightimage.setImageResource(R.drawable.card_red_back);
+            popup_instructions_text.setText(context.getString(R.string.popup_your_move_text));
+        }
+
+        //show dialog
         dialogBuilder.setView(movePopupView);
         dialog = dialogBuilder.create();
         dialog.show();
+
+        Window window = dialog.getWindow();
+        window.setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
 
         popup_close_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,10 +167,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
             kabale_imageview.setImageBitmap(takenImage);
 
-            new SendImageTask(MainActivity.this).execute(photoFile.getAbsolutePath());;
-
-
-
+            new SendImageTask(MainActivity.this).execute(photoFile.getAbsolutePath());
         }
     }
 }
