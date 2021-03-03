@@ -1,8 +1,13 @@
 package group15.card;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,9 +27,12 @@ public class SendImageTask extends AsyncTask<String, Void, String> {
     private MainActivity activity;
     final LoadingDialog loadingDialog;
 
+    public static String responseMessage;
+
     Response response;
 
     public SendImageTask(MainActivity activity) {  // can take other params if needed
+        this.activity = activity;
         this.loadingDialog = new LoadingDialog(activity);
     }
 
@@ -52,13 +60,19 @@ public class SendImageTask extends AsyncTask<String, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(response.message());
+        try {
+            JSONObject reader = new JSONObject(response.body().string());
+            responseMessage = reader.getString("id");
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
         return response.message();
     }
 
     @Override
     protected void onPostExecute(String s) {
         loadingDialog.dismissDialog();
-        //activity.setMessage(response.message().toString());
+        activity.createNewMoveDialog();
     }
 }

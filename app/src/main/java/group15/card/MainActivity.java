@@ -13,6 +13,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         kabale_imageview = findViewById(R.id.kabale_imageview);
         takeImgButton = findViewById(R.id.takeImgButton);
+        popup_instructions_text = findViewById(R.id.popup_instructions_text);
 
         // Get camera permission
         getCameraPermission();
@@ -105,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         popup_close_button = (Button) movePopupView.findViewById(R.id.popup_close_button);
         popup_instructions_text = (TextView) movePopupView.findViewById(R.id.popup_instructions_text);
+        popup_instructions_text.setText((String) SendImageTask.responseMessage);
 
         dialogBuilder.setView(movePopupView);
         dialog = dialogBuilder.create();
@@ -124,11 +127,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
             kabale_imageview.setImageBitmap(takenImage);
 
-            new SendImageTask(MainActivity.this).execute(photoFile.getAbsolutePath());
-        }
-    }
+            new SendImageTask(MainActivity.this).execute(photoFile.getAbsolutePath());;
 
-    public void setMessage(String message){
-        popup_instructions_text.setText(message);
+
+
+        }
     }
 }
