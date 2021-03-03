@@ -10,5 +10,6 @@
     <string name="popup_middleimage_description">popup_middleimage</string>
     <string name="popup_rightimage_description">popup_rightimage</string>
     <string name="popup_close_button_text">close</string>
+    <string name="rules_text">rules</string>
 
 </resources>

@@ -38,7 +38,7 @@ import okhttp3.MediaType;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageView kabale_imageview;
-    Button takeImgButton, nextMoveButton;
+    Button takeImgButton, nextMoveButton, rulesbutton;
     ImageView popup_leftimage,popup_rightimage;
 
     LinearLayout kabale_linearlayout;
@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         kabale_imageview.setImageResource(R.drawable.green_background);
 
         takeImgButton = findViewById(R.id.takeImgButton);
+
         popup_instructions_text = findViewById(R.id.popup_instructions_text);
 
         // Get camera permission
@@ -73,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         nextMoveButton = findViewById(R.id.nextMoveButton);
         nextMoveButton.setOnClickListener(this);
+        rulesbutton = findViewById(R.id.rulesbutton);
+        rulesbutton.setOnClickListener(this);
     }
 
     @Override
@@ -82,6 +85,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(v == nextMoveButton){
             createNewMoveDialog();
+        }
+        if(v == rulesbutton){
+            Intent i = new Intent(this, RulesActivity.class);
+            startActivity(i);
         }
     }
 

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/rules_backbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="go back"
+            />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7-kabale regler"
+            />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="244dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/odins_7_kabale" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bordet"
+            />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Bordet er delt op i tre områder. Bunken findes i øverste venstre hjørne og kortene fra Bunken kan både spilles ind i Byggestabler eller i Grundbunkerne. De syv Byggestabler er centralt placeret på bordet, og i starten af kabalen lægges kortene ud, således at første Byggestabel indeholder eet kort, anden stabel indeholder to kort, tredje indeholder tre kort, og så fremdeles. Det øverste kort i hver stabel ligger med billedsiden op, medens resten skal ligge med billedsiden ned. Øverst til højre findes de fire Grundbunker – Grundbunkerne er i starten af spillet tomme og som kabalen lægges, bygges kortene op i hver af de fire farver fra es til konge."
+            />
+
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kabaleregler"
+            />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Byg Grundbunkerne op i farver fra es til konge. I byggestablerne kan der bygges i nedadgående sekvens med skiftende farve. Både enkelte kort og hele sekvenser af kort bygget i nedgående værdi og skiftende farver kan flyttes mellem de forskellige stabler. Når et kort med billedsiden ned bliver frit, kan det vendes således at billedsiden kommer op, hvorefter kortet kan spilles som alle andre kort i spillet. Hvis der ikke er nogen kort i en byggestabel, kan bare konger flyttes dertil. Kortene i Bunken kan vendes, således at hvert tredje kort ligger frit, og spilles ind i Byggestabler eller Grundbunken. Når Bunken er tom, kan hele Bunken vendes igen, og der kan spilles videre. Der kan spilles indtil det ikke er muligt at foretage flere træk. Kun hvis alle kortene samles i de fire Grundbunker er kabalen gået op."
+            />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kabalestrategi"
+            />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="En mulig strategi for enklere at få kabalen til at gå op, er ikke at spille kort fra Bunken, medmindre det giver en mulighed for at vende et kort eller giver en mulighed for at flytte et kort til en Grundbunke. En anden strategi er at forsøge at vende kort i de større Byggestabler først, da dette kan øge antallet af kort som er i spil, og dermed antallet af mulige træk. Selv med den rette strategi er det dog ikke hver omgang 7-kabale som vil gå op, men du vil have en bedre succesrate."
+            />
+
+    </LinearLayout>
+</ScrollView>
