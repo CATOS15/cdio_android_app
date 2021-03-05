@@ -53,7 +53,7 @@ public class SendImageTask extends AsyncTask<String, Void, String> {
                 .addFormDataPart("file", strings[0], image)
                 .build();
         Request request = new Request.Builder()
-                .url("http://192.168.0.29:5005/upload")
+                .url("http://192.168.1.40:5005/upload")
                 .post(requestBody)
                 .build();
         response = null;
