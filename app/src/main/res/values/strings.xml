@@ -11,5 +11,7 @@
     <string name="popup_rightimage_description">popup_rightimage</string>
     <string name="popup_close_button_text">close</string>
     <string name="rules_text">rules</string>
+    <string name="camerapreview">CameraPreview</string>
+    <string name="imagebutton">ImageButton</string>
 
 </resources>
