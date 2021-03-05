@@ -185,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
                     new Handler(Looper.getMainLooper()).post(() ->
                             new SendImageTask(MainActivity.this).execute(file.getAbsolutePath()));
+
                 }
                 @Override
                 public void onError(@NonNull ImageCaptureException error) {
