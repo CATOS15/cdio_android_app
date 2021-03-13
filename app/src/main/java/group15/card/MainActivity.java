@@ -31,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.io.File;
@@ -49,13 +50,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView captureImage;
 
     // Buttons/Navigation
-    Button nextMoveButton, rulesbutton;
+    FloatingActionButton nextMoveButton, rulesbutton;
 
     // Movedialog/loadingdialog
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
     private TextView popup_header_text, popup_instructions_text;
-    private Button popup_close_button;
+    private FloatingActionButton popup_close_button;
     ImageView popup_leftimage,popup_rightimage;
 
     final LoadingDialog loadingDialog = new LoadingDialog(MainActivity.this);

@@ -7,9 +7,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class RulesActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button rules_backbutton;
+    FloatingActionButton rules_backbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

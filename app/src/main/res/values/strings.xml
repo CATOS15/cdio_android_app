@@ -13,5 +13,18 @@
     <string name="rules_text">rules</string>
     <string name="camerapreview">CameraPreview</string>
     <string name="imagebutton">ImageButton</string>
+    <string name="submit">lort</string>
+
+    <!-- kabale regler strings-->
+    <string name="regler_titel">7-kabale regler</string>
+    <string name="regler_image_description">Kabale example image</string>
+
+    <string name="regler_bordet">Bordet</string>
+    <string name="regler_bordet_tekst">Bordet er delt op i tre områder. Bunken findes i øverste venstre hjørne og kortene fra Bunken kan både spilles ind i Byggestabler eller i Grundbunkerne. De syv Byggestabler er centralt placeret på bordet, og i starten af kabalen lægges kortene ud, således at første Byggestabel indeholder eet kort, anden stabel indeholder to kort, tredje indeholder tre kort, og så fremdeles. Det øverste kort i hver stabel ligger med billedsiden op, medens resten skal ligge med billedsiden ned. Øverst til højre findes de fire Grundbunker – Grundbunkerne er i starten af spillet tomme og som kabalen lægges, bygges kortene op i hver af de fire farver fra es til konge.</string>
+    <string name="regler_kabaleregler">Kabaleregler</string>
+    <string name="regler_kabaleregler_tekst">Byg Grundbunkerne op i farver fra es til konge. I byggestablerne kan der bygges i nedadgående sekvens med skiftende farve. Både enkelte kort og hele sekvenser af kort bygget i nedgående værdi og skiftende farver kan flyttes mellem de forskellige stabler. Når et kort med billedsiden ned bliver frit, kan det vendes således at billedsiden kommer op, hvorefter kortet kan spilles som alle andre kort i spillet. Hvis der ikke er nogen kort i en byggestabel, kan bare konger flyttes dertil. Kortene i Bunken kan vendes, således at hvert tredje kort ligger frit, og spilles ind i Byggestabler eller Grundbunken. Når Bunken er tom, kan hele Bunken vendes igen, og der kan spilles videre. Der kan spilles indtil det ikke er muligt at foretage flere træk. Kun hvis alle kortene samles i de fire Grundbunker er kabalen gået op.</string>
+    <string name="regler_kabalestrategi">Kabalestrategi</string>
+    <string name="regler_kabalestrategi_tekst">En mulig strategi for enklere at få kabalen til at gå op, er ikke at spille kort fra Bunken, medmindre det giver en mulighed for at vende et kort eller giver en mulighed for at flytte et kort til en Grundbunke. En anden strategi er at forsøge at vende kort i de større Byggestabler først, da dette kan øge antallet af kort som er i spil, og dermed antallet af mulige træk. Selv med den rette strategi er det dog ikke hver omgang 7-kabale som vil gå op, men du vil have en bedre succesrate.</string>
+    <!-- kabale regler strings-->
 
 </resources>

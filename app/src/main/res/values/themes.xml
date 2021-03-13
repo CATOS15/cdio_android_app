@@ -1,0 +1,27 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimaryLight</item>
+        <item name="colorSecondary">@color/colorPrimaryLight</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+
+        <item name="android:textColor">@color/white</item>
+
+    </style>
+
+    <style name="Theme.Button.EditProfile.Cancel" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+    <!--
+    https://developer.android.com/guide/topics/ui/floating-action-button#java
+
+    app:fabSize: Either "mini" (40dp), "normal"(56dp)(default) or "auto"
+    app:fabCustomSize: This will decide the overall FAB size.
+    app:maxImageSize: This will decide the icon size.
+    -->
+
+</resources>

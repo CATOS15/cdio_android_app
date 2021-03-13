@@ -1,83 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:padding="10dp"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:background="@mipmap/ic_launcher_v2_background">
 
-    <TextView
-        android:id="@+id/popup_header_text"
-        android:layout_width="match_parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/popup_close_button"
+        android:contentDescription="@string/submit"
+
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:gravity="center"
-        android:text="@string/popup_next_move_text"
+        android:layout_margin="16dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="center"
+        app:fabSize="mini"
+
+        android:tint="@android:color/white"
+        android:src="@drawable/icon_clear"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
-    <TextView
-        android:id="@+id/popup_instructions_text"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:gravity="center"
-        android:text="@string/popup_your_move_text"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="10dp"
+            android:orientation="vertical"
+            tools:context=".MainActivity">
 
-        />
+                <TextView
+                    android:id="@+id/popup_header_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:text="@string/popup_next_move_text"
+                    />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_weight="0"
-        android:orientation="horizontal"
-        android:gravity="center">
+                <TextView
+                    android:id="@+id/popup_instructions_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:text="@string/popup_your_move_text" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_weight="0"
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
 
-        <ImageView
-            android:id="@+id/popup_leftimage"
-            android:contentDescription="@string/popup_leftimage_description"
-            android:layout_width="100dp"
-            android:layout_height="200dp"
-            android:src="@drawable/card_2c" />
+                    <ImageView
+                        android:id="@+id/popup_leftimage"
+                        android:contentDescription="@string/popup_leftimage_description"
+                        android:layout_width="100dp"
+                        android:layout_height="200dp"
+                        android:src="@drawable/card_2c" />
 
-        <ImageView
-            android:id="@+id/popup_middleimage"
-            android:contentDescription="@string/popup_middleimage_description"
-            android:layout_width="68dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:src="@drawable/arrow" />
+                    <ImageView
+                        android:id="@+id/popup_middleimage"
+                        android:contentDescription="@string/popup_middleimage_description"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="25dp"
+                        app:srcCompat="@drawable/ic_baseline_arrow_forward_24" />
 
-        <ImageView
-            android:id="@+id/popup_rightimage"
-            android:contentDescription="@string/popup_rightimage_description"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/card_2c" />
+                    <ImageView
+                        android:id="@+id/popup_rightimage"
+                        android:contentDescription="@string/popup_rightimage_description"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/card_2c" />
+                </LinearLayout>
 
-    </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal">
 
-        <Button
-            android:id="@+id/popup_close_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/popup_close_button_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

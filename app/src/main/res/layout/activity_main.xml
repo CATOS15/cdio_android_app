@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <androidx.camera.view.PreviewView
         android:id="@+id/previewView"
         android:layout_width="match_parent"
@@ -17,25 +16,26 @@
 
     </androidx.camera.view.PreviewView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/capture"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginEnd="24dp"
-        android:layout_weight="1"
-        app:cardCornerRadius="50dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        style="@style/Theme.Button.EditProfile.Cancel"
+
+        android:id="@+id/captureImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/submit"
+        android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/captureImg"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:contentDescription="@string/imagebutton" />
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toTopOf="parent"
+        app:fabCustomSize="80dp"
+        app:borderWidth="0dp"
+        app:rippleColor="#B5B5B5"
+        />
 
 
+
+
+    <!--
     <Button
         android:id="@+id/rulesbutton"
         android:layout_width="88dp"
@@ -44,6 +44,7 @@
         android:text="@string/rules_text"
         app:layout_constraintStart_toStartOf="@+id/previewView"
         app:layout_constraintTop_toTopOf="@+id/previewView" />
+
 
     <Button
         android:id="@+id/nextMoveButton"
@@ -55,5 +56,28 @@
         android:text="@string/your_move_text"
         app:layout_constraintStart_toEndOf="@+id/rulesbutton"
         app:layout_constraintTop_toTopOf="parent" />
+     -->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/rulesbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_rules"
+        android:contentDescription="@string/submit"
+        android:layout_margin="16dp"
+        app:maxImageSize="32dp"
+        app:layout_constraintStart_toStartOf="@+id/previewView"
+        app:layout_constraintTop_toTopOf="@+id/previewView"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/nextMoveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_cards"
+        android:contentDescription="@string/submit"
+        android:layout_margin="16dp"
+        app:maxImageSize="40dp"
+        app:layout_constraintStart_toEndOf="@+id/rulesbutton"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
