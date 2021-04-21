@@ -47,13 +47,13 @@ public class SendImageTask extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... strings) {
         OkHttpClient okHttpClient = new OkHttpClient();
         File file = new File(strings[0]);
-        RequestBody image = RequestBody.create(MediaType.parse("image/png"), file);
+        RequestBody image = RequestBody.create(file, MediaType.parse("image/png"));
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("file", strings[0], image)
                 .build();
         Request request = new Request.Builder()
-                .url("http://192.168.0.29:5005/upload")
+                .url("http://localhost:5005/upload")
                 .post(requestBody)
                 .build();
         response = null;
