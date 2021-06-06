@@ -16,6 +16,17 @@
 
     </androidx.camera.view.PreviewView>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/stregeropdeling"
+        android:src="@drawable/lines_132517_pink"
+        android:contentDescription="@string/regler_image_description"
+        android:scaleType="fitXY"
+        android:alpha=".3"
+        >
+    </ImageView>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         style="@style/Theme.Button.EditProfile.Cancel"
 
