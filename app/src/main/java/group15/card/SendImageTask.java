@@ -12,6 +12,8 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -31,7 +33,6 @@ public class SendImageTask extends AsyncTask<String, Void, String> {
 
     public static String responseMessage;
 
-    Response response;
 
     public SendImageTask(MainActivity activity) {  // can take other params if needed
         this.activity = activity;
@@ -57,18 +58,19 @@ public class SendImageTask extends AsyncTask<String, Void, String> {
                 .url("http://138.68.95.21:5005/upload")
                 .post(requestBody)
                 .build();
-        response = null;
-        try {
-            response = okHttpClient.newCall(request).execute();
+
+        try{
+            Response response = okHttpClient.newCall(request).execute();
             JSONObject reader = new JSONObject(response.body().string());
             moveInformation.firstcard = reader.getString("firstcard");
             moveInformation.secondcard = reader.getString("secondcard");
             moveInformation.movemessage = reader.getString("movemessage");
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-            return "";
+            return response.message();
         }
-        return response.message();
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return "";
     }
 
     @Override
