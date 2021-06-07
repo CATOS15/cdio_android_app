@@ -42,7 +42,7 @@ import java.util.concurrent.Executors;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     // Image stuff
-    private Executor exeggutor = Executors.newSingleThreadExecutor();
+    private Executor executor = Executors.newSingleThreadExecutor();
     private int requestCode = 1001;
     private final String[] permissions = new String[]{"android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE"};
 
@@ -178,10 +178,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         captureImage.setOnClickListener(v -> {
             //Mulig navnændring med hensyn til flere billeder pr. spil
-            File file = new File(getDirectoryName(), "image.jpg");
+            File file = new File(Environment.getExternalStorageDirectory() + "/" + System.currentTimeMillis() + ".jpg");
 
             ImageCapture.OutputFileOptions outputFileOptions = new ImageCapture.OutputFileOptions.Builder(file).build();
-            imageCapture.takePicture(outputFileOptions, exeggutor, new ImageCapture.OnImageSavedCallback () {
+            imageCapture.takePicture(outputFileOptions, executor, new ImageCapture.OnImageSavedCallback () {
                 @Override
                 public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
                     new Handler(Looper.getMainLooper()).post(() ->

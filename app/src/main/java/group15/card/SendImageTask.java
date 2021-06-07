@@ -45,6 +45,7 @@ public class SendImageTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
+
         OkHttpClient okHttpClient = new OkHttpClient();
         File file = new File(strings[0]);
         RequestBody image = RequestBody.create(file, MediaType.parse("image/png"));
@@ -53,22 +54,19 @@ public class SendImageTask extends AsyncTask<String, Void, String> {
                 .addFormDataPart("file", strings[0], image)
                 .build();
         Request request = new Request.Builder()
-                .url("http://localhost:5005/upload")
+                .url("http://138.68.95.21:5005/upload")
                 .post(requestBody)
                 .build();
         response = null;
         try {
             response = okHttpClient.newCall(request).execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
             JSONObject reader = new JSONObject(response.body().string());
             moveInformation.firstcard = reader.getString("firstcard");
             moveInformation.secondcard = reader.getString("secondcard");
             moveInformation.movemessage = reader.getString("movemessage");
         } catch (IOException | JSONException e) {
             e.printStackTrace();
+            return "";
         }
         return response.message();
     }
