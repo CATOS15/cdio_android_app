@@ -97,6 +97,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
+
     public void createNewMoveDialog() {
         dialogBuilder = new AlertDialog.Builder(this);
         final View movePopupView = getLayoutInflater().inflate(R.layout.popup, null);
