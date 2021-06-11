@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/stregeropdeling"
-        android:src="@drawable/lines_132517_pink"
+        android:src="@drawable/lines_72425_pink"
         android:contentDescription="@string/regler_image_description"
         android:scaleType="fitXY"
         android:alpha=".3"
