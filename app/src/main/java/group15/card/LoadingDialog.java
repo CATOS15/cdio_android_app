@@ -4,6 +4,16 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.view.LayoutInflater;
 
+/* 
+#Gruppe 15
+#Christian Frost s184140
+#Mikkel Lindtner s205421 
+#Nikolai Stein s205469
+#Oliver Christensen s176352
+#Søren Andersen s182881
+#Tobias Kristensen s195458
+*/
+
 public class LoadingDialog {
 
     /* set canceable to false */

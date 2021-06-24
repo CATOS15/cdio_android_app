@@ -40,6 +40,16 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+/*
+#Gruppe 15
+#Christian Frost s184140
+#Mikkel Lindtner s205421 
+#Nikolai Stein s205469
+#Oliver Christensen s176352
+#Søren Andersen s182881
+#Tobias Kristensen s195458
+*/
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     // Image stuff
