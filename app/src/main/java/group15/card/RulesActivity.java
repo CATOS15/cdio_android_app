@@ -9,6 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+/*
+#Gruppe 15
+#Christian Frost s184140
+#Mikkel Lindtner s205421 
+#Nikolai Stein s205469
+#Oliver Christensen s176352
+#Søren Andersen s182881
+#Tobias Kristensen s195458
+*/
+
 public class RulesActivity extends AppCompatActivity implements View.OnClickListener{
 
     FloatingActionButton rules_backbutton;
